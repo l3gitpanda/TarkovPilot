@@ -8,6 +8,9 @@ TarkovPilot is an Escape from Tarkov companion application that can automaticall
 
 - Maps
     - Show you position on map (from screenshots)
+    - <img src="https://github.com/ggdiam/TarkovPilot/blob/master/images/pilot-woods.png"/>
+    - Show your look direction (require **pro** status on TM website)
+    - <img src="https://github.com/ggdiam/TarkovPilot/blob/master/images/pilot-woods-look.png"/>
     - Map change (if possible to determine from logs)
 - Automatic updates
     - Press button on website to update  
