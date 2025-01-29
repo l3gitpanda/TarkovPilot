@@ -33,6 +33,16 @@
         }
     }
 
+    public class SendFilenameData : WsMessage
+    {
+        public string filename { get; set; }
+
+        public override string ToString()
+        {
+            return $"{filename}";
+        }
+    }
+
     public class WsMessage
     {
         public string messageType { get; set; }

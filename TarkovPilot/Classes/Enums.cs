@@ -2,6 +2,7 @@
 {
     public static class WsMessageType
     {
+        public const string SEND_FILENAME = "SEND_FILENAME";
         public const string POSITION_UPDATE = "POSITION_UPDATE";
         public const string MAP_CHANGE = "MAP_CHANGE";
         public const string CONFIGURATION = "CONFIGURATION";

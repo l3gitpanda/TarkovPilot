@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.Json;
 using Fleck;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Reflection;
-using System.Globalization;
 
 namespace TarkovPilot
 {
@@ -185,6 +183,18 @@ namespace TarkovPilot
 
             Logger.Log($"Position: {posData}");
             SendData(posData);
+        }
+
+        public static void SendFilename(string filename)
+        {
+            SendFilenameData data = new SendFilenameData()
+            {
+                messageType = WsMessageType.SEND_FILENAME,
+                filename = filename
+            };
+
+            Logger.Log($"SendFilename: {filename}");
+            SendData(data);
         }
 
         public static void SendConfiguration()

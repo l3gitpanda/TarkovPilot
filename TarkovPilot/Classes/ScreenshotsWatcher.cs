@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace TarkovPilot
 {
     public static class ScreenshotsWatcher
     {
-        static readonly string ScreenshotRe = @"\d{4}-\d{2}-\d{2}\[\d{2}-\d{2}\]_(?<position>.+) \(\d\)\.png";
-        static readonly string PositionRe = @"(?<y>-?[\d.]+), (?<z>-?[\d.]+), (?<x>-?[\d.]+)_.*";
-
         static FileSystemWatcher screenshotsWatcher;
 
         public static void Start()
@@ -52,18 +44,9 @@ namespace TarkovPilot
             {
                 string filename = e.Name ?? "";
                 //Logger.Log($"Watcher:OnScreenshot {filename}");
-                var match = Regex.Match(filename, ScreenshotRe);
-                if (match.Success)
+                if (!string.IsNullOrEmpty(filename))
                 {
-                    var _position = match.Groups["position"].Value;
-                    //Logger.Log($"Watcher:OnScreenshot position [{_position}]");
-                    var posMatch = Regex.Match(_position, PositionRe);
-                    if (posMatch.Success)
-                    {
-                        var position = new Position(posMatch.Groups["x"].Value, posMatch.Groups["y"].Value, posMatch.Groups["z"].Value);
-                        //Logger.Log($"Watcher:OnScreenshot position {position}");
-                        Server.SendPosition(position);
-                    }
+                    Server.SendFilename(filename);
                 }
             }
             catch (Exception ex)
