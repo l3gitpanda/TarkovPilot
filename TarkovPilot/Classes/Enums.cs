@@ -5,6 +5,7 @@
         public const string SEND_FILENAME = "SEND_FILENAME";
         public const string POSITION_UPDATE = "POSITION_UPDATE";
         public const string MAP_CHANGE = "MAP_CHANGE";
+        public const string QUEST_UPDATE = "QUEST_UPDATE";
         public const string CONFIGURATION = "CONFIGURATION";
         public const string SETTINGS_UPDATE = "SETTINGS_UPDATE";
         public const string SETTINGS_RESET = "SETTINGS_RESET";

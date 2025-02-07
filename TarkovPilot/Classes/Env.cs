@@ -21,7 +21,7 @@ namespace TarkovPilot
         }
 
         // first logs read on app start
-        public static bool InitialLogsRead { get; set; } = true;
+        //public static bool InitialLogsRead { get; set; } = true;
 
         public static string Version = "0.0";
 
@@ -77,13 +77,6 @@ namespace TarkovPilot
             set { _screenshotsFolder = value; }
         }
 
-        private static bool _mapChangeEnabled = true;
-        public static bool MapChangeEnabled
-        {
-            get { return _mapChangeEnabled; }
-            set { _mapChangeEnabled = value; }
-        }
-
         //===================== AppContext Settings ============================
 
         public static void SetSettings(AppSettings settings, bool force = false)
@@ -96,8 +89,6 @@ namespace TarkovPilot
             {
                 Env.ScreenshotsFolder = settings.screenshotsFolder ?? null;
             }
-
-            Env.MapChangeEnabled = settings.mapChangeEnabled;
         }
 
         public static AppSettings GetSettings()
@@ -106,7 +97,6 @@ namespace TarkovPilot
             {
                 gameFolder = Env.GameFolder,
                 screenshotsFolder = Env.ScreenshotsFolder,
-                mapChangeEnabled = Env.MapChangeEnabled,
             };
             return settings;
         }
@@ -117,7 +107,6 @@ namespace TarkovPilot
             {
                 gameFolder = null,
                 screenshotsFolder = null,
-                mapChangeEnabled = true,
             };
             SetSettings(settings, true);
         }

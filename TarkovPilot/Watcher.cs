@@ -19,7 +19,7 @@ namespace TarkovPilot
             ScreenshotsWatcher.Start();
             LogsWatcher.Start();
 
-            Logger.Log($"Watcher: started");            
+            Logger.Log($"Watcher: started");
         }
 
         public static void Stop()
@@ -31,7 +31,7 @@ namespace TarkovPilot
 
         public static void Restart()
         {
-            Env.InitialLogsRead = true;
+            //Env.InitialLogsRead = true;
             ScreenshotsWatcher.Restart();
             LogsWatcher.Restart();
         }

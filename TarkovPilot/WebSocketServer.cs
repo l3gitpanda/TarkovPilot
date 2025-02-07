@@ -158,17 +158,15 @@ namespace TarkovPilot
 
         public static void SendMap(string map)
         {
-            if (Env.MapChangeEnabled)
+            MapChangeData data = new MapChangeData()
             {
-                MapChangeData data = new MapChangeData()
-                {
-                    messageType = WsMessageType.MAP_CHANGE,
-                    map = map,
-                };
+                messageType = WsMessageType.MAP_CHANGE,
+                map = map,
+            };
 
-                Logger.Log($"Map: {data}");
-                SendData(data);
-            }
+            // Show in logs parsed map name on Website
+            //Logger.Log($"Map: {data}");
+            SendData(data);
         }
 
         public static void SendPosition(Position pos)
@@ -205,7 +203,18 @@ namespace TarkovPilot
                 version = Env.Version,
                 gameFolder = Env.GameFolder,
                 screenshotsFolder = Env.ScreenshotsFolder,
-                mapChangeEnabled = Env.MapChangeEnabled,
+            };
+
+            SendData(data);
+        }
+
+        public static void SendQuestUpdate(string questId, string status)
+        {
+            QuestUpdateData data = new QuestUpdateData()
+            {
+                messageType = WsMessageType.QUEST_UPDATE,
+                questId = questId,
+                status = status,
             };
 
             SendData(data);
