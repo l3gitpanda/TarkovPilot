@@ -70,7 +70,7 @@ namespace TarkovPilot
             {
                 if (_screenshotsFolder == null)
                 {
-                    _screenshotsFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Escape From Tarkov", "Screenshots");
+                    _screenshotsFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Escape from Tarkov", "Screenshots");
                 }
                 return _screenshotsFolder;
             }
