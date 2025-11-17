@@ -11,6 +11,7 @@ namespace TarkovPilot
 
         public static void Log(string msg)
         {
+            //Debug.WriteLine(msg);
             //WriteLogToFile(msg);
 
             // Sending buffer
@@ -25,7 +26,7 @@ namespace TarkovPilot
             {
                 logBuffer.Enqueue(msg);
             }
-            Debug.WriteLine($"====== logBuffer ====== \n{logBuffer} \n========= end =========");
+            //Debug.WriteLine($"====== logBuffer ====== \n{logBuffer} \n========= end =========");
         }
 
         static void WriteLogToFile(string msg)

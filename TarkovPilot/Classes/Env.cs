@@ -39,14 +39,18 @@ namespace TarkovPilot
             {
                 if (_gameFolder == null)
                 {
+                    string installPath = null;
+
                     RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\EscapeFromTarkov");
-                    var installPath = key?.GetValue("InstallLocation")?.ToString();
+                    installPath = key?.GetValue("InstallLocation")?.ToString();
                     key?.Dispose();
 
-                    if (!String.IsNullOrEmpty(installPath))
+                    if (string.IsNullOrEmpty(installPath))
                     {
-                        _gameFolder = installPath;
+                        installPath = "C:\\Battlestate Games\\EFT"; // default path
                     }
+
+                    _gameFolder = installPath;
                 }
 
                 return _gameFolder;
@@ -59,7 +63,14 @@ namespace TarkovPilot
         {
             get
             {
-                return Path.Combine(GameFolder, "Logs"); ;
+                try
+                {
+                    return Path.Combine(GameFolder, "Logs");
+                }
+                catch
+                {
+                    return null;
+                }
             }
         }
 
@@ -79,16 +90,10 @@ namespace TarkovPilot
 
         //===================== AppContext Settings ============================
 
-        public static void SetSettings(AppSettings settings, bool force = false)
+        public static void SetSettings(AppSettings settings)
         {
-            if (force || !String.IsNullOrEmpty(settings.gameFolder))
-            {
-                Env.GameFolder = settings.gameFolder ?? null;
-            }
-            if (force || !String.IsNullOrEmpty(settings.screenshotsFolder))
-            {
-                Env.ScreenshotsFolder = settings.screenshotsFolder ?? null;
-            }
+            Env.GameFolder = settings.gameFolder;
+            Env.ScreenshotsFolder = settings.screenshotsFolder;
         }
 
         public static AppSettings GetSettings()
@@ -108,7 +113,7 @@ namespace TarkovPilot
                 gameFolder = null,
                 screenshotsFolder = null,
             };
-            SetSettings(settings, true);
+            SetSettings(settings);
         }
 
         //===================== AppContext Settings ============================

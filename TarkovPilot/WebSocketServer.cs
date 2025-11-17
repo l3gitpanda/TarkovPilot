@@ -7,6 +7,7 @@ using Fleck;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Reflection;
+using System.IO;
 
 namespace TarkovPilot
 {
@@ -197,12 +198,52 @@ namespace TarkovPilot
 
         public static void SendConfiguration()
         {
+            string gameFolderErr = "";
+            string screenshotsFolderErr = "";
+
+            if (!Directory.Exists(Env.GameFolder))
+            {
+                gameFolderErr = "Folder not found";
+            } else
+            {
+                try
+                {
+                    var testFilePath = Path.Combine(Env.GameFolder, "text.txt");
+                    File.WriteAllText(testFilePath, "test write");
+                    File.Delete(testFilePath);
+                }
+                catch (Exception ex)
+                {
+                    gameFolderErr = $"Don't have access to folder; {ex.Message}";
+                }
+            }
+            
+
+            if (!Directory.Exists(Env.ScreenshotsFolder))
+            {
+                screenshotsFolderErr = "Folder not found";
+            } else
+            {
+                try
+                {
+                    var testFilePath = Path.Combine(Env.ScreenshotsFolder, "text.txt");
+                    File.WriteAllText(testFilePath, "test write");
+                    File.Delete(testFilePath);
+                }
+                catch (Exception ex)
+                {
+                    screenshotsFolderErr = $"Don't have access to folder; {ex.Message}";
+                }
+            }
+
             ConfigurationData data = new ConfigurationData()
             {
                 messageType = WsMessageType.CONFIGURATION,
                 version = Env.Version,
                 gameFolder = Env.GameFolder,
                 screenshotsFolder = Env.ScreenshotsFolder,
+                gameFolderErr = gameFolderErr,
+                screenshotsFolderErr = screenshotsFolderErr,
             };
 
             SendData(data);
@@ -238,9 +279,17 @@ namespace TarkovPilot
             if (msg != null && msg.messageType == WsMessageType.SETTINGS_UPDATE)
             {
                 var settings = ParseJson<UpdateSettingsData>(json);
+                if (string.IsNullOrEmpty(settings.gameFolder))
+                {
+                    settings.gameFolder = "";
+                }
+                if (string.IsNullOrEmpty(settings.screenshotsFolder))
+                {
+                    settings.screenshotsFolder = "";
+                }
                 Logger.Log($"Settings set: \n{settings}");
 
-                Env.SetSettings(settings, true);
+                Env.SetSettings(settings);
                 Settings.Save();
                 SendConfiguration();
 

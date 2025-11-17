@@ -53,6 +53,16 @@ namespace TarkovPilot
         {
             ResetInitialLogsReadDone();
 
+            if (string.IsNullOrEmpty(Env.GameFolder))
+            {
+                Logger.Log($"Watcher: game folder not set");
+                return;
+            }
+            if (!Directory.Exists(Env.GameFolder))
+            {
+                Logger.Log($"Watcher: game folder not found: '{Env.GameFolder}'");
+                return;
+            }
             if (!Directory.Exists(Env.LogsFolder))
             {
                 Logger.Log($"Watcher: logs folder not found: '{Env.LogsFolder}'");
