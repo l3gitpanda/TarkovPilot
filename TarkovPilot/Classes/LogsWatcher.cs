@@ -112,13 +112,13 @@ namespace TarkovPilot
             ClearLogsWatcher();
 
             // log file watcher
-            appLogFileWatcher = new LogFileWatcher(logsFolder, "*application.log");
+            appLogFileWatcher = new LogFileWatcher(logsFolder, "*application_*.log");
             appLogFileWatcher.Created += OnLogFileChanged;
             appLogFileWatcher.Changed += OnLogFileChanged;
             appLogFileWatcher.Start();
 
             // log file watcher
-            notifLogFileWatcher = new LogFileWatcher(logsFolder, "*notifications.log");
+            notifLogFileWatcher = new LogFileWatcher(logsFolder, "*notifications_*.log");
             notifLogFileWatcher.Created += OnLogFileChanged;
             notifLogFileWatcher.Changed += OnLogFileChanged;
             notifLogFileWatcher.Start();
