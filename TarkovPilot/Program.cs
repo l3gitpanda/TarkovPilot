@@ -60,6 +60,7 @@ namespace TarkovPilot
             Settings.Load();
             Logger.Log($"Version: {Env.Version}");
 
+            WebsiteServer.Start();
             Server.Start();
             Watcher.Start();
 

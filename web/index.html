@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tarkov Pilot Local Maps</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <h1>Tarkov Pilot Local Maps</h1>
+      <p class="subtitle">Runs entirely from your machine and connects to the Tarkov Pilot agent over WebSocket.</p>
+    </div>
+    <div class="actions">
+      <button id="updateAgent" class="ghost">Check for updates</button>
+      <div class="connection" id="connectionStatus">Connecting…</div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="map-card">
+      <div class="card-header">
+        <div class="map-select">
+          <label for="mapSelect">Map</label>
+          <select id="mapSelect"></select>
+          <button id="resetBounds" type="button">Reset view</button>
+        </div>
+        <div class="status-group">
+          <span id="mapStatus">Waiting for data…</span>
+          <span id="coordStatus" class="mono"></span>
+        </div>
+      </div>
+      <div id="mapWrapper" class="map-wrapper">
+        <div id="mapBackground" class="map-background"></div>
+        <div id="marker" class="marker" title="Player position"></div>
+      </div>
+      <p class="hint">Drop higher resolution map images into the <code>web/maps</code> folder (matching the map names) to replace the built-in placeholders.</p>
+    </section>
+
+    <aside class="side-panel">
+      <section class="card">
+        <h2>Configuration</h2>
+        <dl id="configList"></dl>
+      </section>
+      <section class="card">
+        <h2>Recent quests</h2>
+        <ul id="questList" class="simple-list"></ul>
+      </section>
+      <section class="card log-card">
+        <h2>Event log</h2>
+        <div id="log" class="log"></div>
+      </section>
+    </aside>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
