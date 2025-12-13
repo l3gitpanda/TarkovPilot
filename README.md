@@ -2,34 +2,31 @@
 
 
 
-TarkovPilot is an Escape from Tarkov companion application that can automatically upload your screenshots file names to https://tarkov-market.com and show your position on map.
+TarkovPilot is an Escape from Tarkov companion application that watches your game logs and screenshots and shows your position on a local web map.
 
 ## Features
 
 - Maps
-    - Show you position on map (from screenshots)
-    - <img src="https://github.com/ggdiam/TarkovPilot/blob/master/images/pilot-woods.png"/>
-    - Show your look direction (require **pro** status on TM website)
-    - <img src="https://github.com/ggdiam/TarkovPilot/blob/master/images/pilot-woods-look.png"/>
+    - Show your position on a local map (from screenshots)
     - Map change (if possible to determine from logs)
     - Quests complete (if possible to determine from logs)
+- Built-in local web UI
+    - Opens at http://localhost:5124 and serves static assets directly from the app bundle
+    - Ships with placeholder map art; drop your own map images into `web/maps` to replace them
 - Automatic updates
-    - Press button on website to update  
-      No need to download new version every time
+    - Press the update button in the local UI to refresh the agent
 
 ## UI
 
-App have no UI, only tray icon.  
-All configurations and logs you can find on TM website TarkovPilot's [page](https://tarkov-market.com/pilot)
+The Windows tray icon opens the local website. All configuration details and recent events are shown in the browser instead of relying on tarkov-market.com.
 
 <img src="https://github.com/ggdiam/TarkovPilot/blob/master/images/TarkovPilot%20page.png"/>
 
 ## Installation
 
-- Latest version you can find on TM website TarkovPilot's [page](https://tarkov-market.com/pilot).
-- Here on GitHub in [latest release](https://github.com/ggdiam/TarkovPilot/releases)
+- Latest version you can find here on GitHub in [latest release](https://github.com/ggdiam/TarkovPilot/releases)
 
-Downloaded, extract the zip and run the `TarkovPilot.exe` executable. Open [TM website](https://tarkov-market.com/pilot), and see it's connected.
+Downloaded, extract the zip and run the `TarkovPilot.exe` executable. Open http://localhost:5124 to see the map UI.
 
 ## FAQ
 

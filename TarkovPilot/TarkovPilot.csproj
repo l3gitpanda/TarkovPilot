@@ -72,6 +72,7 @@
     <Compile Include="Classes\ScreenshotsWatcher.cs" />
     <Compile Include="Classes\Settings.cs" />
     <Compile Include="Classes\Updater.cs" />
+    <Compile Include="Classes\WebsiteServer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
@@ -113,6 +114,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="web\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

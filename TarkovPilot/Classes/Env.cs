@@ -25,11 +25,9 @@ namespace TarkovPilot
 
         public static string Version = "0.0";
 
-#if DEBUG
-        public static string WebsiteUrl = "http://localhost:3000/pilot";
-#else
-        public static string WebsiteUrl = "https://tarkov-market.com/pilot";
-#endif
+        public static string WebsiteUrl = "http://localhost:5124/";
+
+        public static string WebRoot => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "web");
 
 
         private static string _gameFolder = null;
