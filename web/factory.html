@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tarkov Pilot – Factory Map</title>
+  <link rel="stylesheet" href="factory.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Escape from Tarkov</p>
+      <h1>Factory (Day / Night)</h1>
+      <p class="muted">A faithful, offline-friendly copy of the Tarkov Market Factory map with extractions and callouts.</p>
+    </div>
+    <nav class="filters" aria-label="Map filters">
+      <div class="filter-group">
+        <span class="label">Spawns</span>
+        <button type="button" class="chip active" data-filter="spawn">All</button>
+        <button type="button" class="chip" data-filter="pmc">PMC</button>
+        <button type="button" class="chip" data-filter="scav">Scav</button>
+      </div>
+      <div class="filter-group">
+        <span class="label">Points</span>
+        <button type="button" class="chip active" data-filter="extract">Extracts</button>
+        <button type="button" class="chip" data-filter="boss">Boss</button>
+        <button type="button" class="chip" data-filter="quest">Quest</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="map-shell">
+    <div class="map-frame">
+      <div class="map" id="map" role="img" aria-label="Factory map"></div>
+    </div>
+    <aside class="legend" aria-label="Legend">
+      <h2>Legend</h2>
+      <ul>
+        <li><span class="dot extract"></span> Extract</li>
+        <li><span class="dot spawn"></span> Spawn</li>
+        <li><span class="dot boss"></span> Boss</li>
+        <li><span class="dot quest"></span> Quest</li>
+      </ul>
+      <p class="muted">Markers are positioned relative to the original Tarkov Market asset. Drop in a higher resolution <code>web/maps/factory.png</code> to immediately improve fidelity.</p>
+    </aside>
+  </main>
+
+  <script src="factory.js"></script>
+</body>
+</html>
